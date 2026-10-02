@@ -7,7 +7,7 @@ Ta część repozytorium jest **tylko dla grupy M** (testerzy manualni). Grupa A
 | Etykieta issues i PR | `grupa-M` |
 | Twoje pliki | `qa-manual/uczestnicy/<twój-login>/` |
 | Twój branch | `m/<twój-login>` |
-| Gdzie pracujesz | github.com (Copilot Chat, Spaces) + Codespace w przeglądarce |
+| Gdzie pracujesz | VS Code lokalnie (Copilot Chat, aplikacja na localhost:3000) + github.com (issues, PR, Spaces) |
 | Prompty startowe | `.github/prompts/m-*.prompt.md`, agent `analityk-qa` |
 | Kod | Czytasz i pytasz o niego Copilota. **Nie zmieniasz** `src/`, `public/`, `tests/`. |
 

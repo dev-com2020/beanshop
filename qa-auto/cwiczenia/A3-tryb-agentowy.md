@@ -17,7 +17,7 @@ Branch: `a/<login>/A3-flaky`. Issue z etykietą `flaky` opisuje niestabilny test
 
 1. Prompt `/a-analiza-flaky` z nazwą testu.
 2. Agent uruchamia test wielokrotnie i stawia hipotezy. **Nie akceptuj** poprawek typu "zwiększ timeout" czy "dodaj waitForTimeout(2000)".
-3. Potwierdź hipotezę sam: `npx playwright test -g "licznik" --trace on`, potem `npx playwright show-trace <plik>` (w Codespace: `npx playwright show-report` i trace z raportu). Co dzieje się między kliknięciem a zmianą licznika?
+3. Potwierdź hipotezę sam: `npx playwright test -g "licznik" --trace on`, potem `npx playwright show-trace <plik>` (albo `npx playwright show-report` i trace z raportu). Co dzieje się między kliknięciem a zmianą licznika?
 4. Po poprawce: `--repeat-each=30`, 0 porażek. Wynik i przyczyna w opisie draft PR.
 
 ## 3.3 Copilot coding agent (10 min, jeśli włączony w organizacji)

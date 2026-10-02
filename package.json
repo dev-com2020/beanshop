@@ -8,6 +8,9 @@
     "node": ">=20"
   },
   "scripts": {
+    "app": "node scripts/app.mjs",
+    "app:stop": "node scripts/app.mjs stop",
+    "sprawdz": "node scripts/sprawdz-srodowisko.mjs",
     "start": "tsx src/server.ts",
     "dev": "tsx watch src/server.ts",
     "typecheck": "tsc --noEmit",
