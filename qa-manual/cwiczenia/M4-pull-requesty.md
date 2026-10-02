@@ -7,15 +7,15 @@
 Otwórz PR **"Promocja weekendowa: darmowa dostawa od 150 zł"** (etykieta `do-analizy`).
 
 1. Przeczytaj opis PR. Wejdź w `Files changed`. Na github.com otwórz Copilot Chat na stronie PR i zapytaj: *"Wyjaśnij tę zmianę testerowi manualnemu. Co zmienia się dla klienta?"*
-2. W Codespace uruchom `/m-regresja-z-pr` i podaj nazwę brancha `feature/promocja-weekendowa`.
+2. W VS Code uruchom `/m-regresja-z-pr` i podaj nazwę brancha `feature/promocja-weekendowa`.
 3. **Sprawdź Copilota:** czy zauważył, że zmieniony kod jest współdzielony z innymi metodami dostawy? Czy uwzględnił zależność od daty (weekend)? Czy zapytał, w jakiej strefie czasowej liczony jest weekend?
 
 ## 4.2 Regresja oparta na ryzyku (20 min)
 
 1. Z wyniku zbuduj checklistę regresji, posortowaną według ryzyka. Max 12 pozycji: priorytety są ważniejsze niż kompletność.
-2. Przełącz Codespace na branch PR: w terminalu `git fetch && git switch feature/promocja-weekendowa && bash scripts/restart-app.sh`.
+2. Przełącz się na branch PR. W terminalu VS Code: `git fetch`, potem `git switch feature/promocja-weekendowa`, potem `npm run app`. Jeśli masz niezapisane zmiany, najpierw zrób commit na swoim branchu.
 3. Wykonaj checklistę. Weekend możesz zasymulować: aplikacja ma ukryty endpoint zegara (zapytaj Copilota, jak ustawić czas serwera, i zweryfikuj odpowiedź w `docs/architektura.md`).
-4. Wróć na `m/<login>`: `git switch m/<login> && bash scripts/restart-app.sh`.
+4. Wróć na swój branch: `git switch m/<login>`, potem `npm run app`.
 5. Wklej checklistę z wynikami jako **review w PR** (komentarz, bez zatwierdzania). Początek: `[grupa-M] @<login>`.
 
 ## 4.3 Plan testów dla nowej funkcjonalności (20 min)

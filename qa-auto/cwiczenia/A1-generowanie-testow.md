@@ -2,7 +2,7 @@
 
 **Cel:** generować testy szybko, ale mierzyć ich wartość: wartości brzegowe, styl frameworka, testy mutacyjne, property-based.
 
-Branch: `git switch main && git switch -c a/<login>/A1-generowanie`.
+Branch: `git switch main`, potem `git switch -c a/<login>/A1-generowanie`.
 
 ## 1.1 `/tests` i Test Explorer (15 min)
 
@@ -20,7 +20,7 @@ Prompt `/a-test-e2e`, scenariusz: *"wyszukiwanie produktów zgodnie z BR-10: wie
 
 ## 1.3 Pułapka testów, które tylko przechodzą (20 min)
 
-1. `npm run test:mutation`, otwórz `reports/mutation/index.html` (w Codespace: prawy klik -> `Open with Live Preview` albo pobierz).
+1. `npm run test:mutation`, otwórz `reports/mutation/index.html` (dwuklik w Eksploratorze plików albo `start reports/mutation/index.html` w PowerShellu).
 2. Znajdź `src/domain/pricing.ts`. Które mutanty przeżyły? Który istniejący test w `tests/unit/pricing.test.ts` "przechodzi, ale nic nie sprawdza"?
 3. Poproś Copilota: *"Wzmocnij testy w tests/unit/pricing.test.ts tak, żeby zabiły mutanty, które przeżyły w raporcie Strykera. Oczekiwane wartości bierz z docs/wymagania.md, nie z kodu."*
 4. Uruchom Strykera ponownie. Zapisz mutation score dla `pricing.ts` przed i po.

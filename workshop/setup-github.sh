@@ -57,7 +57,7 @@ pr cwiczenie/nowy-ui-koszyka    nowy-ui-koszyka.md      "cwiczenie,grupa-A" --dr
 cat <<TODO
 
 Gotowe. Kroki ręczne (ustawienia, których nie da się ustawić z gh CLI):
-  1. Organizacja -> Settings -> Codespaces: włącz dla uczestników, ustaw limit wydatków.
+  1. Uczestnicy: przed szkoleniem git clone + npm ci + npm run sprawdz (README.md). Codespaces opcjonalnie (płatne).
   2. Organizacja -> Copilot -> Policies: Copilot Chat w IDE i na github.com, Agent mode, MCP servers in Copilot,
      Copilot code review, (opcjonalnie) Copilot coding agent. Licencje dla wszystkich uczestników.
   3. Repo -> Settings -> Collaborators and teams: zespoły "qa-grupa-m" i "qa-grupa-a" z prawem Write.

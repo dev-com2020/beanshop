@@ -8,24 +8,33 @@ Sklep internetowy z kawą, przygotowany do dwóch jednodniowych szkoleń Integri
 | Twoja ścieżka | [`qa-manual/`](qa-manual/README.md) | [`qa-auto/`](qa-auto/README.md) |
 | Etykieta | `grupa-M` | `grupa-A` |
 | Branche | `m/<login>` | `a/<login>/<ćwiczenie>` |
-| Narzędzia | github.com, Copilot Chat, Spaces, Codespace w przeglądarce | VS Code, Copilot Ask/Plan/Agent, Playwright MCP, coding agent |
+| Narzędzia | VS Code lokalnie, github.com, Copilot Chat, Spaces | VS Code, Copilot Ask/Plan/Agent, Playwright MCP, coding agent |
 | Zmieniasz kod? | Nie. Pytasz o niego. | Tak, kod testów w `tests/`. Nie zmieniasz `src/`. |
 
 > Aplikacja **celowo zawiera błędy**. Wymagania w `docs/wymagania.md` są źródłem prawdy, kod nie.
 
 ## Start w 2 minuty
 
-**Codespace (zalecane):** `Code` -> `Codespaces` -> `Create codespace on main`. Aplikacja startuje sama na porcie 3000.
-
-**Lokalnie:** Node.js 20+.
+Pracujemy lokalnie. Potrzebujesz: **Node.js 22 LTS** ([nodejs.org](https://nodejs.org)), **Git** ([git-scm.com](https://git-scm.com)), **VS Code** z rozszerzeniem **GitHub Copilot Chat** i kontem GitHub z licencją Copilot.
 
 ```bash
+git clone https://github.com/dev-com2020/beanshop.git
+cd beanshop
 npm ci
-npm start                      # http://localhost:3000
-npm test                       # testy unit + API + e2e (Playwright sam uruchamia aplikację)
+npx playwright install chromium   # grupa A obowiązkowo, grupa M opcjonalnie
+npm run sprawdz                   # kontrola stanowiska
+npm run app                       # aplikacja w tle: http://localhost:3000
 ```
 
-Restart aplikacji z czystymi danymi: `bash scripts/restart-app.sh`.
+| Komenda | Co robi |
+|---------|---------|
+| `npm run app` | uruchamia aplikację w tle albo restartuje ją z czystymi danymi |
+| `npm run app:stop` | zatrzymuje aplikację |
+| `npm test` | testy unit + API + e2e (Playwright korzysta z działającej aplikacji albo sam ją uruchamia) |
+
+Komendy działają tak samo w PowerShellu, Git Bash i na macOS/Linux.
+
+Opcjonalnie (płatne, rozliczane przez organizację): GitHub Codespaces. Repo ma gotowy `.devcontainer`, aplikacja startuje w nim sama.
 
 ## Konta testowe
 

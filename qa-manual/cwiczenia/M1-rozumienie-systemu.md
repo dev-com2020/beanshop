@@ -4,7 +4,7 @@
 
 ## 1.1 Pytania o działanie (10 min)
 
-Zadaj agentowi **analityk-qa** (Codespace) lub Copilotowi na github.com:
+Zadaj agentowi **analityk-qa** (VS Code) lub Copilotowi na github.com:
 
 - *"Opisz, jak liczona jest kwota do zapłaty w koszyku. Krok po kroku, z nazwami plików i funkcji."*
 - *"Co się dzieje ze stanem magazynowym, gdy klient składa i gdy anuluje zamówienie?"*
