@@ -4,7 +4,7 @@
 
 ## Kroki
 
-1. Codespace (`Code` -> `Codespaces` -> `Create codespace on main`) albo lokalnie: `git clone`, `npm ci`, `npx playwright install chromium`, VS Code z rozszerzeniami z `.vscode/extensions.json`.
+1. Lokalnie (przygotowane przed szkoleniem według `README.md`): `git pull`, `npm ci`, `npm run sprawdz`. VS Code z rozszerzeniami z `.vscode/extensions.json`.
 2. `npm test`. Zanotuj wynik. Uruchom drugi raz. Czy wynik jest taki sam? (Wrócimy do tego w A3.)
 3. Utwórz branch: `git switch -c a/<login>/A0-setup`.
 4. **Tryby Copilota.** W panelu Chat przełącz kolejno **Ask**, **Plan**, **Agent** i zadaj to samo: *"Dodaj test e2e sprawdzający, że niezalogowany klient po kliknięciu 'Dodaj do koszyka' trafia na stronę logowania."*

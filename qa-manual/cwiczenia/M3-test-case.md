@@ -2,7 +2,7 @@
 
 **Cel:** projektować test case'y świadomie dobranymi technikami, z Copilotem jako partnerem, i wykonać je na aplikacji.
 
-Szablon: `qa-manual/szablony/test-case.md`. Prompt startowy: w Codespace wpisz w czacie `/m-test-case-z-wymagan`.
+Szablon: `qa-manual/szablony/test-case.md`. Prompt startowy: w VS Code wpisz w czacie `/m-test-case-z-wymagan`.
 Wynik zapisuj w `qa-manual/uczestnicy/<login>/test-cases.md`.
 
 ## 3.1 Klasy równoważności i wartości brzegowe (25 min)
@@ -31,9 +31,9 @@ Koszt dostawy zależy od: wartości produktów po rabacie (< 200 / >= 200), meto
 
 ## 3.4 Wykonanie (30 min)
 
-1. Wybierz 10 test case'ów o najwyższym priorytecie i wykonaj je w swoim Codespace.
+1. Wybierz 10 test case'ów o najwyższym priorytecie i wykonaj je w aplikacji na http://localhost:3000.
    - Klient: `anna@beanshop.test` / `Kawa1234!`. Obsługa (zmiana statusów): `admin@beanshop.test` / `Admin1234!`.
-   - Dane wracają do stanu początkowego po restarcie aplikacji: w terminalu `bash scripts/restart-app.sh`.
+   - Dane wracają do stanu początkowego po restarcie aplikacji: w terminalu `npm run app`.
 2. Uzupełnij "Wynik wykonania". Każdy niezaliczony TC to kandydat na zgłoszenie w M5 (zapisz notatkę: kroki, dane, co widzisz).
 
 ## Gotowe, gdy
