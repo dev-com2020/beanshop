@@ -7,7 +7,7 @@ Ta część repozytorium jest **tylko dla grupy A** (testerzy automatyzujący, S
 | Etykieta issues i PR | `grupa-A` |
 | Twoje branche | `a/<twój-login>/<ćwiczenie>`, np. `a/jkowalski/A1-generowanie` |
 | PR-y | zawsze **draft**, do `main`, z etykietą `grupa-A`. Nie mergujemy: `main` zostaje wspólną bazą. |
-| Gdzie pracujesz | VS Code (lokalnie lub Codespace) z Copilotem w trybach Ask / Plan / Agent |
+| Gdzie pracujesz | VS Code lokalnie z Copilotem w trybach Ask / Plan / Agent |
 | Prompty startowe | `.github/prompts/a-*.prompt.md`, instrukcje `.github/instructions/testy-*.instructions.md` |
 | Stack | TypeScript, Playwright (API + e2e), Vitest, fast-check, Stryker, axe-core |
 
@@ -15,7 +15,9 @@ Ta część repozytorium jest **tylko dla grupy A** (testerzy automatyzujący, S
 
 ```bash
 npm ci
-npx playwright install --with-deps chromium   # w Codespace robi się samo
+npx playwright install chromium               # przeglądarka dla Playwrighta
+npm run sprawdz                               # kontrola stanowiska
+npm run app                                   # aplikacja w tle na :3000 (restart = czyste dane)
 npm test                                      # unit + API + e2e
 npm run test:mutation                         # testy mutacyjne domeny
 npx playwright test --ui                      # tryb UI Playwrighta

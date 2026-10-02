@@ -21,7 +21,7 @@ Trener przydziela parom różne chartery, żeby pokryć cały sklep.
 
 Dla każdego znalezionego błędu (z sesji i z M3):
 
-1. W Codespace uruchom `/m-bug-report` i wklej swoje surowe notatki.
+1. W VS Code uruchom `/m-bug-report` i wklej swoje surowe notatki.
 2. **Zweryfikuj** wskazane przez Copilota "podejrzane miejsce w kodzie": otwórz plik, poproś o wyjaśnienie fragmentu. Jeśli nie pasuje, usuń tę sekcję. Lepiej brak hipotezy niż fałszywa.
 3. Odtwórz błąd jeszcze raz według kroków z raportu. Jeśli się nie da, raport nie jest gotowy.
 4. Zgłoś: `Issues` -> `New issue` -> **Zgłoszenie błędu**, grupa `grupa-M`. Dodaj etykietę `grupa-M`.

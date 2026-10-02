@@ -5,7 +5,7 @@ Branch: `a/<login>/A4-agenci`.
 ## 4.1 Playwright MCP: agent steruje przeglądarką (25 min)
 
 1. Serwer MCP jest skonfigurowany w `.vscode/mcp.json`. Otwórz plik i kliknij `Start` nad serwerem `playwright` (albo: paleta poleceń -> `MCP: List Servers`). W Chat (Agent) w ikonie narzędzi sprawdź, czy narzędzia `playwright` są włączone.
-2. Aplikacja musi działać (`bash scripts/restart-app.sh`). Prompt:
+2. Aplikacja musi działać (`npm run app`). Prompt:
 
    > *"Używając narzędzi Playwright MCP otwórz http://localhost:3000. Zaloguj się jako anna@beanshop.test / Kawa1234!, dodaj Brazylię Santos do koszyka, złóż i opłać zamówienie. Wyloguj się, zaloguj jako admin@beanshop.test / Admin1234! i zmień status tego zamówienia na 'Wysłane'. Sprawdź, jakie akcje są teraz dostępne dla zamówienia. Porównaj z BR-09. Na koniec napisz test e2e odtwarzający te kroki w stylu naszego frameworka."*
 
@@ -22,11 +22,11 @@ Branch: `a/<login>/A4-agenci`.
 
 ## 4.3 Healer: naprawa po zmianie UI (15 min)
 
-1. `git stash -u` (jeśli masz zmiany), `git switch cwiczenie/nowy-ui-koszyka`, `bash scripts/restart-app.sh`. Ten branch zmienia UI koszyka (nowe etykiety i identyfikatory).
+1. `git stash -u` (jeśli masz zmiany), `git switch cwiczenie/nowy-ui-koszyka`, `npm run app`. Ten branch zmienia UI koszyka (nowe etykiety i identyfikatory).
 2. `npx playwright test tests/e2e/cart.spec.ts`: testy padają.
 3. Agent **playwright-test-healer**: *"Napraw padające testy w tests/e2e/cart.spec.ts."*
 4. Oceń każdą zmianę healera: **naprawa lokatora** (OK) czy **zmiana oczekiwanego wyniku** (wymaga decyzji człowieka)? Czy zmiany trafiły do page objectu, czy do testu?
-5. Wróć: `git switch a/<login>/A4-agenci && git stash pop`.
+5. Wróć: `git switch a/<login>/A4-agenci`, potem `git stash pop`.
 
 ## 4.4 Kiedy to ma sens (10 min, dyskusja)
 
