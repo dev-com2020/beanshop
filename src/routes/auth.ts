@@ -30,7 +30,7 @@ authRouter.post('/register', (req, res) => {
     res.status(409).json({ error: 'EMAIL_TAKEN', message: 'Konto z tym adresem już istnieje' });
     return;
   }
-  const user = { id: db.nextUserId++, email, name, password, role: 'customer' as const, failedLogins: 0, locked: false };
+  const user = { id: db.nextUserId++, email, name, password, role: 'customer' as const, failedLogins: 0, locked: false, points: 0 };
   db.users.push(user);
   res.status(201).json(publicUser(user));
 });

@@ -20,6 +20,7 @@ export interface User {
   role: 'customer' | 'admin';
   failedLogins: number;
   locked: boolean;
+  points: number;
 }
 
 export interface CartItem {
@@ -42,6 +43,7 @@ export interface Order {
   summary: PriceSummary;
   shipping: ShippingMethod;
   history: { status: OrderStatus; at: string }[];
+  points: number;
 }
 
 const seedProducts = (): Product[] => [
@@ -57,9 +59,9 @@ const seedProducts = (): Product[] => [
 ];
 
 const seedUsers = (): User[] => [
-  { id: 1, email: 'anna@beanshop.test', name: 'Anna Nowak', password: 'Kawa1234!', role: 'customer', failedLogins: 0, locked: false },
-  { id: 2, email: 'jan@beanshop.test', name: 'Jan Kowalski', password: 'Espresso99', role: 'customer', failedLogins: 0, locked: false },
-  { id: 3, email: 'admin@beanshop.test', name: 'Admin Sklepu', password: 'Admin1234!', role: 'admin', failedLogins: 0, locked: false },
+  { id: 1, email: 'anna@beanshop.test', name: 'Anna Nowak', password: 'Kawa1234!', role: 'customer', failedLogins: 0, locked: false, points: 0 },
+  { id: 2, email: 'jan@beanshop.test', name: 'Jan Kowalski', password: 'Espresso99', role: 'customer', failedLogins: 0, locked: false, points: 0 },
+  { id: 3, email: 'admin@beanshop.test', name: 'Admin Sklepu', password: 'Admin1234!', role: 'admin', failedLogins: 0, locked: false, points: 0 },
 ];
 
 export const db = {

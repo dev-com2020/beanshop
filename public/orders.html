@@ -6,8 +6,9 @@
 <main>
   <h1>Zamówienia</h1>
   <p id="created-msg" class="ok" role="status"></p>
+  <p>Twoje punkty lojalnościowe: <strong data-testid="loyalty-points">0</strong></p>
   <table data-testid="orders-table">
-    <thead><tr><th>Nr</th><th>Data</th><th>Kwota</th><th>Status</th><th>Akcje</th></tr></thead>
+    <thead><tr><th>Nr</th><th>Data</th><th>Kwota</th><th>Punkty</th><th>Status</th><th>Akcje</th></tr></thead>
     <tbody id="orders"></tbody>
   </table>
 </main>
@@ -21,8 +22,9 @@ async function load() {
   let orders;
   try { orders = await api('/orders'); }
   catch (e) { if (e.status === 401) location.href = '/login?next=/orders'; return; }
+  try { document.querySelector('[data-testid="loyalty-points"]').textContent = (await api('/orders/points')).points; } catch { /* brak */ }
   const tbody = document.getElementById('orders');
-  tbody.innerHTML = orders.length ? '' : '<tr><td colspan="5">Brak zamówień</td></tr>';
+  tbody.innerHTML = orders.length ? '' : '<tr><td colspan="6">Brak zamówień</td></tr>';
   for (const o of orders.slice().reverse()) {
     const tr = document.createElement('tr');
     tr.dataset.orderId = o.id;
@@ -33,7 +35,7 @@ async function load() {
       const opts = o.allowedNext.map((s) => `<option value="${s}">${LABELS[s]}</option>`).join('');
       if (opts) actions.push(`<label>Zmień status <select class="admin-status"><option value="">-</option>${opts}</select></label>`);
     }
-    tr.innerHTML = `<td>#${o.id}</td><td>${new Date(o.createdAt).toLocaleString('pl-PL')}</td><td>${money(o.summary.total)}</td>
+    tr.innerHTML = `<td>#${o.id}</td><td>${new Date(o.createdAt).toLocaleString('pl-PL')}</td><td>${money(o.summary.total)}</td><td>${o.points}</td>
       <td class="status" data-testid="order-status">${LABELS[o.status]}</td><td>${actions.join(' ')}</td>`;
     tr.querySelector('.pay')?.addEventListener('click', () => act(`/orders/${o.id}/pay`, 'POST'));
     tr.querySelector('.cancel')?.addEventListener('click', () => { if (confirm(`Anulować zamówienie #${o.id}?`)) act(`/orders/${o.id}/cancel`, 'POST'); });

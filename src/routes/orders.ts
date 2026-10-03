@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { requireAdmin, requireAuth, type AuthedRequest } from '../auth.js';
+import { pointsFor } from '../domain/loyalty.js';
 import { allowedNext, canTransition, type OrderStatus } from '../domain/orderStatus.js';
 import { cartOf, db, now, type Order } from '../store.js';
 import { cartView } from './cart.js';
@@ -29,6 +30,10 @@ ordersRouter.get('/', (req: AuthedRequest, res) => {
   res.json(orders.map(withActions));
 });
 
+ordersRouter.get('/points', (req: AuthedRequest, res) => {
+  res.json({ points: req.user!.points });
+});
+
 ordersRouter.post('/', (req: AuthedRequest, res) => {
   const cart = cartOf(req.user!.id);
   if (cart.items.length === 0) {
@@ -53,7 +58,9 @@ ordersRouter.post('/', (req: AuthedRequest, res) => {
     summary: view.summary,
     shipping: cart.shipping,
     history: [{ status: 'NEW', at: createdAt }],
+    points: pointsFor(view.summary.total),
   };
+  req.user!.points += order.points;
   for (const item of cart.items) db.products.find((x) => x.id === item.productId)!.stock -= item.quantity;
   db.orders.push(order);
   db.carts.delete(req.user!.id);
