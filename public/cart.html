@@ -13,9 +13,9 @@
     </table>
 
     <form id="discount-form" class="searchbar" style="margin-top:16px">
-      <label for="code">Kod rabatowy</label>
+      <label for="code">Kod promocyjny</label>
       <input id="code" name="code" placeholder="np. KAWA10">
-      <button type="submit">Zastosuj</button>
+      <button type="submit">Użyj kodu</button>
       <button type="button" class="secondary" id="remove-codes" hidden>Usuń kody</button>
     </form>
     <p id="discount-msg"></p>
@@ -30,7 +30,7 @@
       <div><span>Wartość produktów</span><span data-testid="subtotal"></span></div>
       <div><span>Rabat <small id="codes"></small></span><span data-testid="discount"></span></div>
       <div><span>Dostawa</span><span data-testid="shipping"></span></div>
-      <div class="total"><span>Do zapłaty</span><span data-testid="total"></span></div>
+      <div class="total"><span>Do zapłaty</span><span data-testid="grand-total"></span></div>
       <button id="checkout" style="width:100%;margin-top:12px">Złóż zamówienie</button>
     </div>
   </section>
@@ -66,7 +66,7 @@ function render(cart) {
   document.querySelector('[data-testid="subtotal"]').textContent = money(s.subtotal);
   document.querySelector('[data-testid="discount"]').textContent = s.discount ? `-${money(s.discount)}` : money(0);
   document.querySelector('[data-testid="shipping"]').textContent = s.shipping === 0 ? 'Gratis' : money(s.shipping);
-  document.querySelector('[data-testid="total"]').textContent = money(s.total);
+  document.querySelector('[data-testid="grand-total"]').textContent = money(s.total);
   document.getElementById('codes').textContent = s.appliedCodes.length ? `(${s.appliedCodes.join(', ')})` : '';
   document.getElementById('remove-codes').hidden = s.appliedCodes.length === 0;
   document.querySelectorAll('input[name="shipping"]').forEach((r) => { r.checked = r.value === cart.shipping; });
@@ -83,7 +83,7 @@ document.getElementById('discount-form').addEventListener('submit', async (e) =>
   const msg = document.getElementById('discount-msg');
   try {
     render(await api('/cart/discount', { method: 'POST', body: { code: e.target.code.value } }));
-    msg.className = 'ok'; msg.textContent = 'Kod został zastosowany';
+    msg.className = 'ok'; msg.textContent = 'Kod aktywny';
     e.target.code.value = '';
   } catch (err) { msg.className = 'error'; msg.textContent = err.message; }
 });
