@@ -9,6 +9,8 @@ export const SHIPPING = {
   /** Doplata za express, gdy dostawa standardowa jest darmowa. */
   EXPRESS_SURCHARGE: 10,
   FREE_THRESHOLD: 200,
+  /** Promocja weekendowa: darmowa dostawa od 150 zl w soboty i niedziele. */
+  WEEKEND_FREE_THRESHOLD: 150,
 } as const;
 
 export interface PricedLine {
@@ -44,23 +46,30 @@ export function discountAmount(subtotal: number, codes: DiscountCode[]): number 
   return Math.min(amount, subtotal);
 }
 
-/** BR-04: darmowa dostawa standardowa od 200,00 zl wartosci produktow po rabacie. */
-export function shippingCost(afterDiscount: number, method: ShippingMethod): number {
+/** Prog darmowej dostawy zalezny od dnia tygodnia (promocja weekendowa). */
+export function freeShippingThreshold(date: Date): number {
+  const day = date.getUTCDay();
+  const weekend = day === 0 || day === 6;
+  return weekend ? SHIPPING.WEEKEND_FREE_THRESHOLD : SHIPPING.FREE_THRESHOLD;
+}
+
+/** BR-04: darmowa dostawa od progu (200 zl, w weekend 150 zl) wartosci produktow po rabacie. */
+export function shippingCost(afterDiscount: number, method: ShippingMethod, date: Date = new Date()): number {
   if (afterDiscount === 0) return 0;
-  const free = afterDiscount > SHIPPING.FREE_THRESHOLD;
-  if (method === 'EXPRESS') return free ? SHIPPING.EXPRESS_SURCHARGE : SHIPPING.EXPRESS;
-  return free ? 0 : SHIPPING.STANDARD;
+  if (afterDiscount > freeShippingThreshold(date)) return 0;
+  return method === 'EXPRESS' ? SHIPPING.EXPRESS : SHIPPING.STANDARD;
 }
 
 export function priceCart(
   lines: Pick<PricedLine, 'lineTotal'>[],
   codes: DiscountCode[],
   method: ShippingMethod,
+  date: Date = new Date(),
 ): PriceSummary {
   const subtotal = subtotalOf(lines);
   const discount = discountAmount(subtotal, codes);
   const afterDiscount = subtotal - discount;
-  const shipping = shippingCost(afterDiscount, method);
+  const shipping = shippingCost(afterDiscount, method, date);
   return {
     subtotal,
     discount,

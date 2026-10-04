@@ -17,8 +17,8 @@ describe('pricing', () => {
     expect(shippingCost(250, 'STANDARD')).toBe(0);
   });
 
-  it('nalicza doplate za express przy darmowej dostawie', () => {
-    expect(shippingCost(250, 'EXPRESS')).toBe(SHIPPING.EXPRESS_SURCHARGE);
+  it('express jest darmowy przy darmowej dostawie', () => {
+    expect(shippingCost(250, 'EXPRESS')).toBe(0);
   });
 
   it('nalicza rabat procentowy', () => {

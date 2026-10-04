@@ -9,7 +9,7 @@ Wersja 1.4. Właściciel produktu: Zespół BeanShop. Dokument jest źródłem p
 | BR-01 | Rejestracja | Hasło ma od 8 do 64 znaków, zawiera co najmniej jedną wielką literę i jedną cyfrę. Adres e-mail jest unikalny bez względu na wielkość liter. |
 | BR-02 | Logowanie | Po 5 **kolejnych** nieudanych próbach logowania konto zostaje zablokowane (HTTP 423). Udane logowanie zeruje licznik nieudanych prób. |
 | BR-03 | Koszyk | Ilość jednego produktu w koszyku: od 1 do 10 sztuk i nie więcej niż stan magazynowy. Produktu ze stanem 0 nie można dodać. |
-| BR-04 | Dostawa | Kurier standard: 14,99 zł, **darmowy od 200,00 zł** wartości produktów po rabacie. Kurier express: 24,99 zł; gdy przysługuje darmowa dostawa, express kosztuje 10,00 zł (dopłata). |
+| BR-04 | Dostawa | Kurier standard: 14,99 zł, **darmowy od 200,00 zł** wartości produktów po rabacie; w soboty i niedziele **od 150,00 zł** (promocja weekendowa). Kurier express: 24,99 zł; gdy przysługuje darmowa dostawa, express kosztuje 10,00 zł (dopłata). |
 | BR-05 | Kody rabatowe | Do zamówienia można zastosować **jeden** kod. Zastosowanie nowego kodu zastępuje poprzedni. Wielkość liter w kodzie nie ma znaczenia. |
 | BR-06 | Kody rabatowe | `KAWA10`: -10%. `MINUS20`: -20,00 zł przy wartości produktów min. 100,00 zł. `JESIEN15`: -15%, ważny do 30.11.2026 **włącznie**. `LATO25`: wygasł 31.08.2026. |
 | BR-07 | Kody rabatowe | Warunek minimalnej wartości jest sprawdzany przy każdej zmianie koszyka. Gdy przestaje być spełniony, kod jest usuwany, a klient widzi komunikat. |

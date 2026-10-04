@@ -14,7 +14,7 @@ export function cartView(cart: Cart) {
     const p = db.products.find((x) => x.id === item.productId)!;
     return { productId: p.id, name: p.name, unitPrice: p.price, quantity: item.quantity, lineTotal: lineTotal(p.price, item.quantity) };
   });
-  return { items: lines, shipping: cart.shipping, summary: priceCart(lines, cart.codes, cart.shipping) };
+  return { items: lines, shipping: cart.shipping, summary: priceCart(lines, cart.codes, cart.shipping, now()) };
 }
 
 const addItem = z.object({ productId: z.number().int(), quantity: z.number().int().min(1).max(MAX_QTY_PER_ITEM).default(1) });
